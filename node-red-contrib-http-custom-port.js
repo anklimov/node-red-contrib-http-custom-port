@@ -313,14 +313,17 @@ module.exports = function (RED) {
             httpNode.delete(this.url, cookieParser(), httpMiddleware, corsHandler, metricsHandler, jsonParser, urlencParser, rawBodyParser, this.callback, this.errorHandler);
         }
 
-        this.on("close", function () {
+        this.on("close", function (done) {
             var node = this;
-            httpNode._router.stack.forEach(function (route, i, routes) {
+            /*httpNode._router.stack.forEach(function (route, i, routes) {
                 if (route.route && route.route.path === node.url && route.route.methods[node.method]) {
                     routes.splice(i, 1);
                 }
-            });
-			httpNode.close(function() { console.log("Shutdown express server for NodeRED http custom port node " + node.port); });
+            });*/
+			httpNode.close(function() {
+				console.log("Shutdown express server for NodeRED http custom port node "); 
+				done();
+			});
         });
 
     }
