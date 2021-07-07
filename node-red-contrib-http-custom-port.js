@@ -187,7 +187,7 @@ module.exports = function (RED) {
 		/** create the new express server **/
 		var httpNode = express();
 		httpNode.set('port', n.port);
-		var server = app.listen(app.get('port'), function() {
+		var server = httpNode.listen(httpNode.get('port'), function() {
 			console.log('NodeRED http custom port node server listening on port ' + server.address().port);
 		});
 		
