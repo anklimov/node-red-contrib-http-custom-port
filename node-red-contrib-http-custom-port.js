@@ -183,6 +183,7 @@ module.exports = function (RED) {
             this.warn(RED._("httpin.errors.missing-path"));
             return;
         }
+        var node = this;
 		
 		/** create the new express server **/
 		var httpNode = express();
@@ -192,8 +193,12 @@ module.exports = function (RED) {
 			httpServer = httpNode.listen(httpNode.get('port'), function() {
 				console.log('NodeRED http custom port node server listening on port ' + server.address().port);
 			});
+			httpServer.on("error", function(err){
+				node.status("Cannot create server, restart nodered");
+				console.log("Error starting up express " + err);
+			});
 		} catch(e){
-			this.status("Cannot create server, restart nodered");
+			node.status("Cannot create server, restart nodered");
 		}
 		
 		/** this is copied from outside the function normally but we probably need it for every server started **/
@@ -214,7 +219,6 @@ module.exports = function (RED) {
         this.upload = n.upload;
         this.swaggerDoc = n.swaggerDoc;
 
-        var node = this;
 
         this.errorHandler = function (err, req, res, next) {
             node.warn(err);
