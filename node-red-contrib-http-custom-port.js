@@ -187,9 +187,13 @@ module.exports = function (RED) {
 		/** create the new express server **/
 		var httpNode = express();
 		httpNode.set('port', n.port);
-		var server = httpNode.listen(httpNode.get('port'), function() {
-			console.log('NodeRED http custom port node server listening on port ' + server.address().port);
-		});
+		try{
+			var server = httpNode.listen(httpNode.get('port'), function() {
+				console.log('NodeRED http custom port node server listening on port ' + server.address().port);
+			});
+		} catch(e){
+			this.status("Cannot create server, restart nodered");
+		}
 		
 		/** this is copied from outside the function normally but we probably need it for every server started **/
 		var corsHandler = function (req, res, next) {
