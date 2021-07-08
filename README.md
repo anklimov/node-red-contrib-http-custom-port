@@ -1,0 +1,1 @@
+Based off the built-in NodeRED HTTP node, but with added capability to start its own express instance to receive requests on another port.
