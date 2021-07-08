@@ -187,8 +187,9 @@ module.exports = function (RED) {
 		/** create the new express server **/
 		var httpNode = express();
 		httpNode.set('port', n.port);
+		var httpServer = null;
 		try{
-			var server = httpNode.listen(httpNode.get('port'), function() {
+			httpServer = httpNode.listen(httpNode.get('port'), function() {
 				console.log('NodeRED http custom port node server listening on port ' + server.address().port);
 			});
 		} catch(e){
@@ -318,14 +319,13 @@ module.exports = function (RED) {
         }
 
         this.on('close', function (removed, done) {
-			console.log("onclose called");
             var node = this;
             /*httpNode._router.stack.forEach(function (route, i, routes) {
                 if (route.route && route.route.path === node.url && route.route.methods[node.method]) {
                     routes.splice(i, 1);
                 }
             });*/
-			httpNode.close(function() {
+			httpServer.close(function() {
 				console.log("Shutdown express server for NodeRED http custom port node "); 
 				done();
 			});
