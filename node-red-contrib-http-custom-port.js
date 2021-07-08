@@ -191,7 +191,7 @@ module.exports = function (RED) {
 		var httpServer = null;
 		try{
 			httpServer = httpNode.listen(httpNode.get('port'), function() {
-				console.log('NodeRED http custom port node server listening on port ' + server.address().port);
+				console.log('NodeRED http custom port node server listening on port ' + httpServer.address().port);
 			});
 			httpServer.on("error", function(err){
 				node.status("Cannot create server, restart nodered");
