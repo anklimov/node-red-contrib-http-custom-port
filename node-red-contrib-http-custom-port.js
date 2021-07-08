@@ -177,7 +177,7 @@ module.exports = function (RED) {
         return wrapper;
     }
 
-    function HTTPIn(n) {
+    function HTTPInCustom(n) {
         RED.nodes.createNode(this, n);
         if (!n.url) {
             this.warn(RED._("httpin.errors.missing-path"));
@@ -317,7 +317,8 @@ module.exports = function (RED) {
             httpNode.delete(this.url, cookieParser(), httpMiddleware, corsHandler, metricsHandler, jsonParser, urlencParser, rawBodyParser, this.callback, this.errorHandler);
         }
 
-        this.on("close", function (done) {
+        this.on('close', function (removed, done) {
+			console.log("onclose called");
             var node = this;
             /*httpNode._router.stack.forEach(function (route, i, routes) {
                 if (route.route && route.route.path === node.url && route.route.methods[node.method]) {
@@ -331,6 +332,6 @@ module.exports = function (RED) {
         });
 
     }
-    RED.nodes.registerType("node-red-contrib-http-custom-port", HTTPIn);
+    RED.nodes.registerType("node-red-contrib-http-custom-port", HTTPInCustom);
 
 }
