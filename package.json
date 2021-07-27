@@ -1,6 +1,6 @@
 {
 	"name": "node-red-contrib-http-custom-port",
-	"version": "0.0.6",
+	"version": "0.0.8",
 	"description": "",
 	"main": "index.js",
 	"scripts": {
@@ -10,21 +10,32 @@
 	"license": "ISC",
 	"node-red": {
 		"nodes": {
-			"node-red-contrib-http-custom-port": "node-red-contrib-http-custom-port.js"
+			"node-red-contrib-http-custom-port": "node-red-contrib-http-custom-port.js",
+			"http request update": "21-httprequest-update.js"
 		}
 	},
-	"keywords": ["node-red"],
+	"keywords": [
+		"node-red"
+	],
 	"dependencies": {
 		"body-parser": "^1.19.0",
 		"content-type": "^1.0.4",
+		"cookie": "^0.4.1",
 		"cookie-parser": "^1.4.5",
 		"cors": "^2.8.5",
 		"express": "^4.17.1",
+		"form-data": "^4.0.0",
+		"got": "^11.8.2",
 		"hash-sum": "^2.0.0",
+		"hpagent": "^0.1.2",
 		"is-utf8": "^0.2.1",
 		"media-typer": "^1.1.0",
 		"multer": "^1.4.2",
+		"mustache": "^4.2.0",
 		"on-headers": "^1.0.2",
-		"raw-body": "^2.4.1"
+		"querystring": "^0.2.1",
+		"raw-body": "^2.4.1",
+		"tough-cookie": "^4.0.0",
+		"uuid": "^8.3.2"
 	}
 }

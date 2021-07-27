@@ -199,6 +199,7 @@ module.exports = function (RED) {
 			});
 		} catch(e){
 			node.status("Cannot create server, restart nodered");
+			console.log(e);
 		}
 		
 		/** this is copied from outside the function normally but we probably need it for every server started **/
