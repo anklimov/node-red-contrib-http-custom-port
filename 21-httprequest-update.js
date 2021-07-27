@@ -475,12 +475,15 @@ in your Node-RED user directory (${RED.settings.userDir}).
                     opts.https.certificateAuthority = opts.https.ca;
                     delete opts.https.ca;
                 }
+                if (opts.https.cert) {
+                    opts.https.certificate = opts.https.cert;
+                    delete opts.https.cert;
+                }
             } else {
                 if (msg.hasOwnProperty('rejectUnauthorized')) {
                     opts.https = { rejectUnauthorized: msg.rejectUnauthorized };
                 }
             }
-			console.log(opts.https);
 
             // Now we have established all of our own headers, take a snapshot
             // of their case so we can restore it prior to the request being sent.
