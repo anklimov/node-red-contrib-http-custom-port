@@ -480,6 +480,7 @@ in your Node-RED user directory (${RED.settings.userDir}).
                     opts.https = { rejectUnauthorized: msg.rejectUnauthorized };
                 }
             }
+			console.log(opts.https);
 
             // Now we have established all of our own headers, take a snapshot
             // of their case so we can restore it prior to the request being sent.
