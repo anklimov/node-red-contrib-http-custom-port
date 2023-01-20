@@ -314,7 +314,8 @@ module.exports = function (RED) {
         if (this.method == "get") {
             httpNode.get(this.url, cookieParser(), httpMiddleware, corsHandler, metricsHandler, this.callback, this.errorHandler);
         } else if (this.method == "post") {
-            httpNode.post(this.url, cookieParser(), httpMiddleware, corsHandler, metricsHandler, jsonParser, urlencParser, multipartParser, rawBodyParser, this.callback, this.errorHandler);
+                   //httpNode.post(this.url, cookieParser(), httpMiddleware, corsHandler, metricsHandler, jsonParser, urlencParser, multipartParser, rawBodyParser, this.callback, this.errorHandler);
+                     httpNode.post(this.url, bodyParser.text({ type: '*/*' }), this.callback, this.errorHandler);
         } else if (this.method == "put") {
             httpNode.put(this.url, cookieParser(), httpMiddleware, corsHandler, metricsHandler, jsonParser, urlencParser, rawBodyParser, this.callback, this.errorHandler);
         } else if (this.method == "patch") {
