@@ -1,7 +1,7 @@
 {
-	"name": "node-red-contrib-http-custom-port",
-	"version": "0.0.11",
-	"description": "",
+	"name": "node-red-contrib-http-custom-port-raw",
+	"version": "0.0.12",
+	"description": "based on node-red-contrib-http-custom-port, allowed to skip automatical body to JSON parsing and gain access to raw request body",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,7 @@
 	"license": "ISC",
 	"node-red": {
 		"nodes": {
-			"node-red-contrib-http-custom-port": "node-red-contrib-http-custom-port.js",
+			"node-red-contrib-http-custom-port-raw": "node-red-contrib-http-custom-port-raw.js",
 			"http request update": "21-httprequest-update.js"
 		}
 	},
