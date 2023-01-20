@@ -37,5 +37,11 @@
 		"raw-body": "^2.4.1",
 		"tough-cookie": "^4.0.0",
 		"uuid": "^8.3.2"
-	}
+	},
+	
+	"repository": {
+		  "type": "git",
+		  "url": "https://github.com/anklimov/node-red-contrib-http-custom-port-raw.git"
+		}
+	  
 }
